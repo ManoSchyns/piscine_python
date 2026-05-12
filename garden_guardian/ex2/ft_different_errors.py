@@ -1,5 +1,4 @@
 def garden_operations(operation_number: int) -> None:
-    a: str
     if operation_number == 0:
         int("abs")
     elif operation_number == 1:
@@ -7,8 +6,9 @@ def garden_operations(operation_number: int) -> None:
     elif operation_number == 2:
         open("blabl")
     elif operation_number == 3:
-        a = 9 + "emf"
+        9 + "emf"
     return
+
 
 def test_error_types():
     print("=== Garden Error Types Demo ===")
@@ -41,5 +41,5 @@ def test_error_types():
         print("Operation completed successfully")
     except Exception as exception:
         print("Caught ValueError: ", exception)
-    
+
     print("\nAll error types tested successfully!")
