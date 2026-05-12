@@ -1,7 +1,7 @@
 class Plant:
     def __init__(self, name: str, height: float, age: int) -> None:
         self._name = name
-        self.stat = Plant.Stat()
+        self.stat: Plant.Stat = Plant.Stat()
         if height < 0:
             print(self._name.capitalize() +
                   ":  Error, height can’t be negative")
@@ -62,7 +62,7 @@ class Plant:
 
     @classmethod
     def create_anonymous(cls):
-        return cls("Unknown", 0.0, 0)
+        return cls("Unknown plant", 0.0, 0)
 
     class Stat():
 
@@ -80,8 +80,10 @@ class Plant:
         def add_number_show(self) -> None:
             self._number_show += 1
 
-        def display(self):
-            print(self._number_grow, " grow, ", self._number_age, " age, ", self._number_show, " show", sep="")
+        def display(self) -> None:
+            print(self._number_grow, " grow, ", self._number_age, " age, ",
+                  self._number_show, " show", sep="")
+
 
 class Flower(Plant):
 
@@ -115,7 +117,7 @@ class Tree(Plant):
         else:
             self._trunk_diameter = trunk_diameter
         self._shade = False
-        self.stat = Tree.Stat()
+        self.stat: Tree.Stat = Tree.Stat()
 
     def produce_shade(self) -> None:
         if not self._shade:
@@ -130,7 +132,7 @@ class Tree(Plant):
     def show(self) -> None:
         super().show()
         print("Trunk diameter: ", round(self._trunk_diameter, 1), "cm", sep="")
-    
+
     class Stat(Plant.Stat):
 
         def __init__(self):
@@ -139,10 +141,11 @@ class Tree(Plant):
 
         def add_number_shade(self) -> None:
             self._shade_count += 1
-        
+
         def display(self) -> None:
             super().display()
-            print(self._shade_count, "shade")
+            print(self._shade_count, " shade", sep="")
+
 
 class Vegetable(Plant):
 
@@ -177,9 +180,10 @@ class Seed(Flower):
         print("Seeds:", self._seeds)
 
 
-def display_plant_stats(plant) -> None:
+def display_plant_stats(plant: Plant) -> None:
     print("Stats:  ", end="")
     plant.stat.display()
+
 
 if __name__ == "__main__":
 

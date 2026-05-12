@@ -1,6 +1,7 @@
 class Plant:
     def __init__(self, name: str, height: float, age: int) -> None:
         self._name = name
+        self._grown: float = 0.0
         if height < 0:
             print(self._name.capitalize() +
                   ":  Error, height can’t be negative")
@@ -40,9 +41,9 @@ class Plant:
         self._ages += 1
 
     def grow(self) -> None:
-        to_grow: float = self.ages / self.height
-        self.height += to_grow
-        self.grown += to_grow
+        to_grow: float = self._ages / self._height
+        self._height += to_grow
+        self._grown += to_grow
 
     def show(self) -> None:
         print(self._name.capitalize() + ":  ", end="")
@@ -59,7 +60,7 @@ if __name__ == "__main__":
     rose.set_height(25)
     rose.set_age(30)
     print("\nHeight updated:  ", round(rose.get_height(), 1), "cm", sep="")
-    print("Age updated:  ", rose.get_age(), "cm", sep="")
+    print("Age updated: ", rose.get_age(), " days", sep="")
     print("\n", end="")
     rose.set_age(-1)
     rose.set_height(-1)

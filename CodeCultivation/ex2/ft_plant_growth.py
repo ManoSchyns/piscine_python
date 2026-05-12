@@ -21,7 +21,7 @@ class Plant:
         print(" days old")
 
 
-def one_week(plant: Plant):
+def one_week(plant: Plant) -> None:
     i: int = 1
 
     while i <= 7:
