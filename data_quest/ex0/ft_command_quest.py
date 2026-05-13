@@ -7,11 +7,11 @@ if __name__ == "__main__":
     i: int = 1
 
     print("Program name: " + args[0])
-    if(len == 1):
+    if (len == 1):
         print("No arguments provided!")
     else:
         print("Arguments received:", len-1)
-        while(i < len):
+        while (i < len):
             print("Argument ", i, ": " + args[i], sep="")
             i += 1
     print("Total arguments:", len)
