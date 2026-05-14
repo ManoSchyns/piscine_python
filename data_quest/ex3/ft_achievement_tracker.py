@@ -15,13 +15,13 @@ class Player:
         self._name = name
         self._achivements = gen_player_achievements(achivement_list)
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self._name
 
-    def get_achivement(self):
+    def get_achivement(self) -> set[str]:
         return self._achivements
 
-    def show(self):
+    def show(self) -> None:
         print("Player " + self.get_name() + ":", self.get_achivement())
 
 
@@ -32,7 +32,7 @@ return un set compris entre lst[nb1:nb2]
 """
 
 
-def gen_player_achievements(achivements: list[str]):
+def gen_player_achievements(achivements: list[str]) -> set[str]:
     lenght: int = len(achivements)
     n1: int
     n2: int
@@ -46,8 +46,8 @@ def gen_player_achievements(achivements: list[str]):
 
 # Retourne les achivement present entre tout les joueurs.
 # La liste unique des achivements totaux
-def get_common_uniq_achiv(players: list[Player]):
-    all = set()
+def get_common_uniq_achiv(players: list[Player]) -> set[str]:
+    all: set[str] = set()
     for player in players:
         all = all.union(player.get_achivement().difference(all))
     return (all)
@@ -55,10 +55,11 @@ def get_common_uniq_achiv(players: list[Player]):
 
 # Return la liste des achivements que tout les joueurs ont obtenu
 def get_commun_all_player(player: list[Player], set_achivement):
-    all = set_achivement
-    for player in players:
-        all = player.get_achivement().intersection(all,
-                player.get_achivement())
+    all: set[str] = set_achivement
+    name: Player
+    for name in players:
+        all = name.get_achivement().intersection(all,
+                                                 name.get_achivement())
     return all
 
 
@@ -73,24 +74,36 @@ def print_user_achivement(players) -> None:
 
 
 # affiche les achivements manquant aux joueurs pour tous les avoir
-def print_user_missing_achivement(players, achivements):
+def print_user_missing_achivement(players, achivements) -> None:
     for player in players:
         print(player.get_name() + " is missing:",
-        set(achivements).intersection(player.get_achivement()))
+              set(achivements).intersection(player.get_achivement()))
 
 
 if __name__ == "__main__":
     print("=== Achievement Tracker System ===")
     achivements: list[str] = ["Crafting Genius", "World Savior",
-    "Master Explorer",
-    "Collector Supreme", "Untouchable", "Boss Slayer", "Demon", "Ingeniorrr",
-    "Senior", "Debilous", "Explosed", "The rat", "Useless boy", "Useless Girl",
-    "JPP", "Yeahh", "Boooommm", "Easter Egg", "Lol", "Defeat", "Winner",
-    "Better",
-    "Loser", "You can't", "The end", "Black hole", "Nothing", "Blbla", "Next",
-    "Original",
-    "Crap", "Fish", "None", "Pat", "Batman", "Spiderman", "Wonder", "Nails",
-    "Mini", "Maxi", "Diamond", "Bronze", "Gold", "loserrr"]
+                              "Master Explorer", "Collector Supreme",
+                              "Untouchable", "Boss Slayer",
+                              "Demon", "Ingeniorrr",
+                              "Senior", "Debilous",
+                              "Explosed", "The rat",
+                              "Useless boy", "Useless Girl",
+                              "JPP", "Yeahh",
+                              "Boooommm", "Easter Egg",
+                              "Lol", "Defeat",
+                              "Winner", "Better",
+                              "Loser", "You can't",
+                              "The end", "Black hole",
+                              "Nothing", "Blbla",
+                              "Next", "Original",
+                              "Crap", "Fish",
+                              "None", "Pat",
+                              "Batman", "Spiderman",
+                              "Wonder", "Nails",
+                              "Mini", "Maxi",
+                              "Diamond", "Bronze",
+                              "Gold", "loserrr"]
 
     # Les joueurs
     alice: Player = Player("Alice", achivements)
@@ -110,7 +123,7 @@ if __name__ == "__main__":
     print("\nAll distinct achievements:", set_achivement)
 
     # recuperation des Common achievements
-    common = get_commun_all_player(players, set_achivement)
+    common: set[str] = get_commun_all_player(players, set_achivement)
     print("\nCommon achievements:", common)
 
     # achivement unique par utilisateur
