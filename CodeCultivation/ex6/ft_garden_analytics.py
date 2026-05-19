@@ -47,7 +47,7 @@ class Plant:
             to_grow = 1.0
         else:
             to_grow = self.get_age() / self.get_height()
-        set_height(self.get_height + to_grow)
+        self.set_height(self.get_height() + to_grow)
         self.stat.add_number_grow()
 
     def show(self) -> None:
@@ -68,6 +68,7 @@ class Plant:
     def create_anonymous(cls):
         return cls("Unknown plant", 0.0, 0)
 
+    # class statistiaue
     class Stat():
 
         def __init__(self) -> None:
@@ -84,9 +85,19 @@ class Plant:
         def add_number_show(self) -> None:
             self._number_show += 1
 
+        def get_number_grow(self) -> int:
+            return self._number_grow
+
+        def get_number_age(self) -> int:
+            return self._number_age
+
+        def get_number_show(self) -> int:
+            return self._number_show
+
         def display(self) -> None:
-            print(self._number_grow, " grow, ", self._number_age, " age, ",
-                  self._number_show, " show", sep="")
+            print(self.get_number_grow(), " grow, ",
+                  self.get_number_age(), " age, ",
+                  self.get_number_show(), " show", sep="")
 
 
 class Flower(Plant):
@@ -146,9 +157,12 @@ class Tree(Plant):
         def add_number_shade(self) -> None:
             self._shade_count += 1
 
+        def get_number_shade(self) -> int:
+            return self._shade_count
+
         def display(self) -> None:
             super().display()
-            print(self._shade_count, " shade", sep="")
+            print(self.get_number_shade(), " shade", sep="")
 
 
 class Vegetable(Plant):
@@ -236,14 +250,13 @@ if __name__ == "__main__":
     print("[statistics for Oak]")
     display_plant_stats(oak)
 
-    print("[asking the oak to produce shade]")
     oak.produce_shade()
 
     print("Tree Oak now produces a shade of",
           round(oak.get_height(), 1), "cm long and",
           round(oak._trunk_diameter, 1), "cm wide.")
 
-    print("[asking the oak to produce shade]")
+    print("[statistics for Oak]")
     display_plant_stats(oak)
 
     print()

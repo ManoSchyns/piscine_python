@@ -38,27 +38,28 @@ class Plant:
         return self._height
 
     def age(self) -> None:
-        self._ages += 1
+        self.set_age(self.get_age() + 1)
 
     def grow(self) -> None:
         to_grow: float
         if self._height == 0.0:
             to_grow = 1.0
         else:
-            to_grow = self._ages / self._height
-        self._height += to_grow
+            to_grow = self.get_age() / self.get_height()
+        self.set_height(self.get_height() + to_grow)
         self._grown += to_grow
 
     def show(self) -> None:
         print(self._name.capitalize() + ":  ", end="")
-        print(round(self._height, 1), end="")
+        print(round(self.get_height(), 1), end="")
         print("cm, ", end="")
-        print(self._ages, end="")
+        print(self.get_age(), end="")
         print(" days old")
 
 
 if __name__ == "__main__":
-    rose: Plant = Plant("rose", 25.0, 10)
+    print("=== Garden Security System ===")
+    rose: Plant = Plant("rose", 15.0, 10)
     print("Plant created:  ", end="")
     rose.show()
     rose.set_height(25)
