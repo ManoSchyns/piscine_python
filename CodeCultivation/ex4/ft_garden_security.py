@@ -41,7 +41,11 @@ class Plant:
         self._ages += 1
 
     def grow(self) -> None:
-        to_grow: float = self._ages / self._height
+        to_grow: float
+        if self._height == 0.0:
+            to_grow = 1.0
+        else:
+            to_grow = self._ages / self._height
         self._height += to_grow
         self._grown += to_grow
 

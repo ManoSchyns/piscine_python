@@ -42,8 +42,12 @@ class Plant:
         self.stat.add_number_age()
 
     def grow(self) -> None:
-        to_grow: float = self._ages / self._height
-        self._height += to_grow
+        to_grow: float
+        if self.get_height() == 0.0:
+            to_grow = 1.0
+        else:
+            to_grow = self.get_age() / self.get_height()
+        set_height(self.get_height + to_grow)
         self.stat.add_number_grow()
 
     def show(self) -> None:
