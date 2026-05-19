@@ -21,7 +21,10 @@ class Plant:
         print(" days old")
 
 
-def one_week(plant: Plant) -> None:
+if __name__ == "__main__":
+    plant: Plant = Plant("Rose", 25.0, 30)
+    print("=== Garden Plant Growth ===")
+    plant.show()
     i: int = 1
 
     while i <= 7:
@@ -31,10 +34,3 @@ def one_week(plant: Plant) -> None:
         plant.show()
         i += 1
     print("Growth this week:  ", round(plant.grown, 1), "cm", sep="")
-
-
-if __name__ == "__main__":
-    plant: Plant = Plant("Rose", 25.0, 30)
-    print("=== Garden Plant Growth ===")
-    plant.show()
-    one_week(plant)
