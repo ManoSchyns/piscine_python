@@ -60,7 +60,7 @@ class Plant:
 
     @staticmethod
     def check_age(age_to_check: int) -> bool:
-        if age_to_check > 365:
+        if age_to_check >= 365:
             return True
         return False
 
@@ -135,13 +135,10 @@ class Tree(Plant):
         self.stat: Tree.Stat = Tree.Stat()
 
     def produce_shade(self) -> None:
-        if not self._shade:
-            self._shade = True
-            print("[asking the " + self._name + " to produce shade]")
-        else:
-            print("Tree " + self._name + " now produces a shade of ",
-                  round(self.get_height(), 1), "cm long and ",
-                  round(self._trunk_diameter, 1), "cm wide.", sep="")
+        self._shade = True
+        print("Tree " + self._name + " now produces a shade of ",
+              round(self.get_height(), 1), "cm long and ",
+              round(self._trunk_diameter, 1), "cm wide.", sep="")
         self.stat.add_number_shade()
 
     def show(self) -> None:
@@ -250,11 +247,8 @@ if __name__ == "__main__":
     print("[statistics for Oak]")
     display_plant_stats(oak)
 
+    print("[asking the oak to produce shade]")
     oak.produce_shade()
-
-    print("Tree Oak now produces a shade of",
-          round(oak.get_height(), 1), "cm long and",
-          round(oak._trunk_diameter, 1), "cm wide.")
 
     print("[statistics for Oak]")
     display_plant_stats(oak)
