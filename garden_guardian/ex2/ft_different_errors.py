@@ -1,21 +1,21 @@
 def garden_operations(operation_number: int) -> None:
     if operation_number == 0:
-        int("abs")
+        int("abc")
     elif operation_number == 1:
         4 / 0
     elif operation_number == 2:
-        open("blabl")
+        open("/non/existent/file")
     elif operation_number == 3:
         9 + "emf"
     return
 
 
-def test_error_types():
+def test_error_types() -> None:
     print("=== Garden Error Types Demo ===")
     print("Testing operation 0...")
     try:
         garden_operations(0)
-    except ValueError as exception:
+    except (ValueError, TypeError) as exception:
         print("Caught ValueError: ", exception)
     print("Testing operation 1...")
     try:
@@ -43,3 +43,7 @@ def test_error_types():
         print("Caught ValueError: ", exception)
 
     print("\nAll error types tested successfully!")
+
+
+if __name__ == "__main__":
+    test_error_types()

@@ -1,26 +1,22 @@
 def input_temperature(temp_str: str) -> int:
-    value: int = 0
-    try:
-        value = int(temp_str)
-    except ValueError:
-        print("Caught input_temperature error: " +
-              "invalid literal for int() with base 10: " + temp_str)
-    if (value < 0 or value > 40):
-        raise ValueError("Temperature is invalid. The plants die")
+    value = int(temp_str)
+
+    if value < 0:
+        raise ValueError(f"{value}°C is too cold for plants (min 0°C)")
+
+    if value > 40:
+        raise ValueError(f"{value}°C is too hot for plants (max 40°C)")
+
     return value
 
 
 def test_temperature() -> None:
-    a: int
     print("=== Garden Temperature ===")
 
     try:
         print("\nInput data is '25'")
-        a = input_temperature("25")
-        if (a != 25):
-            print("For input : '25' program return:", a)
-        else:
-            print("Temperature is now 25°C")
+        input_temperature("25")
+        print("Temperature is now 25°C")
     except ValueError as exception:
         print("Caught input_temperature error: ", exception)
     except Exception:
@@ -29,28 +25,8 @@ def test_temperature() -> None:
         return
 
     try:
-        print("\nInput data is '2q'")
-        a = input_temperature("2q")
-    except ValueError as exception:
-        print("Caught input_temperature error: ", exception)
-    except Exception:
-        print("===> Error <===")
-        print("Program crashed")
-        return
-
-    try:
-        print("\nInput data is ''")
-        a = input_temperature("")
-    except ValueError as exception:
-        print("Caught input_temperature error: ", exception)
-    except Exception:
-        print("===> Error <===")
-        print("Program crashed")
-        return
-
-    try:
-        print("\nInput data is '2q'")
-        a = input_temperature("2q")
+        print("\nInput data is 'abc'")
+        input_temperature("abc")
     except ValueError as exception:
         print("Caught input_temperature error: ", exception)
     except Exception:
@@ -60,7 +36,7 @@ def test_temperature() -> None:
 
     try:
         print("\nInput data is '100'")
-        a = input_temperature("100")
+        input_temperature("100")
     except ValueError as exception:
         print("Caught input_temperature error: ", exception)
     except Exception:
@@ -70,7 +46,7 @@ def test_temperature() -> None:
 
     try:
         print("\nInput data is '-50'")
-        a = input_temperature("-50")
+        input_temperature("-50")
     except ValueError as exception:
         print("Caught input_temperature error: ", exception)
     except Exception:

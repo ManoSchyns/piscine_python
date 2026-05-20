@@ -1,5 +1,5 @@
 class GardenError(Exception):
-    def __init__(self, error_mess="Unknown plant error"):
+    def __init__(self, error_mess="Unknown garden error"):
         super().__init__(error_mess)
 
 
@@ -9,13 +9,14 @@ class PlantError(GardenError):
 
 
 class WaterError(GardenError):
-    def __init__(self, error_mess="Unknown plant error"):
+    def __init__(self, error_mess="Unknown water error"):
         super().__init__(error_mess)
 
 
 def water_plant(plant_name: str) -> None:
-    if (plant_name[0] < 'A' or plant_name[0] > 'Z'):
+    if plant_name != plant_name.capitalize():
         raise PlantError("Invalid plant name to water: '" + plant_name + "'")
+    print(f"Watering {plant_name}: [OK]")
 
 
 def test_watering_system() -> None:
@@ -25,13 +26,10 @@ def test_watering_system() -> None:
     print("Opening watering system")
     try:
         water_plant("Tomato")
-        print("Watering Tomato: [OK]")
         water_plant("Lettuce")
-        print("Watering Lettuce: [OK]")
         water_plant("Carrots")
-        print("Watering Carrots: [OK]")
     except PlantError as e:
-        print("Caught PlantError: ", e)
+        print("Caught PlantError:", e)
         print(".. ending tests and returning to main")
     finally:
         print("Closing watering system")
@@ -40,15 +38,16 @@ def test_watering_system() -> None:
     print("Opening watering system")
     try:
         water_plant("Tomato")
-        print("Watering Tomato: [OK]")
         water_plant("lettuce")
-        print("Watering Lettuce: [OK]")
         water_plant("carrots")
-        print("Watering Carrots: [OK]")
     except PlantError as e:
-        print("Caught PlantError: ", e)
+        print("Caught PlantError:", e)
         print(".. ending tests and returning to main")
     finally:
         print("Closing watering system")
     print()
     print("Cleanup always happens, even with errors!")
+
+
+if __name__ == "__main__":
+    test_watering_system()
