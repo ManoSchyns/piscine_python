@@ -27,6 +27,7 @@ def print_stats(datas: list[int]) -> None:
 
     print("Scores processed:", datas)
     print("Total players:", lenght)
+    print("Total score:", total)
     print("Average score:", total / lenght)
     print("Hight score:", maxi)
     print("Low score:", mini)
