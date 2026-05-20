@@ -8,7 +8,7 @@ def analyse_datas(datas: list[str]) -> list[int]:
         try:
             list_ret.append(int(elem))
         except Exception:
-            print("Invalid parameter : '" + elem + "'")
+            print("Invalid parameter: '" + elem + "'")
     return (list_ret)
 
 
@@ -18,7 +18,7 @@ def print_stats(datas: list[int]) -> None:
     total: int
     lenght: int = len(datas)
     if lenght == 0:
-        print("No scores provided. Usage: python3" +
+        print("No scores provided. Usage: python3 " +
               "ft_score_analytics.py <score1> <score2> ...")
         return
     total = sum(datas)
@@ -29,7 +29,7 @@ def print_stats(datas: list[int]) -> None:
     print("Total players:", lenght)
     print("Total score:", total)
     print("Average score:", total / lenght)
-    print("Hight score:", maxi)
+    print("High score:", maxi)
     print("Low score:", mini)
     print("Score range:", maxi - mini)
 

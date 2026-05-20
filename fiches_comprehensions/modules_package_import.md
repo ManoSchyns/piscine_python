@@ -24,7 +24,7 @@ alchemy/
     __init__.py
     spells.py
 
--> Sans __init__.py :
+-> git Sans __init__.py :
 
 Python peut ignorer le dossier (selon version / contexte)
 
